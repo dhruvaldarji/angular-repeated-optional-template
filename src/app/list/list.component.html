@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let item of items">
+    <ng-container *ngIf="itemRef; else defaultTemplate">
+      <ng-container *ngTemplateOutlet="itemRef; context: { $implicit: item }"></ng-container>
+    </ng-container>
+    <ng-template #defaultTemplate>
+      <a
+        [id]="item.id"
+        [routerLink]="[item.route]"
+      >
+        Default: 
+        <app-item [item]="item"></app-item>
+      </a>
+    </ng-template>
+  </li>
+</ul>

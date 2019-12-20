@@ -1,0 +1,35 @@
+<div>
+  <span>Current Route: {{ currentRoute$ | async | json }}</span>
+  <hr/>
+</div>
+
+<div>
+  <h3>Default Template Example</h3>
+  <p>The default template uses Angular RouterLink.</p>
+  <p>Clicking these links will navigate without reloading the app.</p>
+  <app-list [items]="data$ | async"></app-list>
+  <hr/>
+</div>
+
+<div>
+  <h3>Overwritten Template Example</h3>
+  <app-list [items]="data$ | async">
+    <p>Overwritten Content</p>
+    <ng-template let-item>
+      <a
+        [id]="item.id"
+        [href]="item.route"
+      >
+        Overwritten: 
+        <app-item [item]="item"></app-item>
+      </a>
+    </ng-template>
+  </app-list>
+  <hr/>
+</div>
+
+<div>
+  <h3>Raw Data</h3>
+  <pre>{{ data$ | async | json }}</pre>
+  <hr/>
+</div>
